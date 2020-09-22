@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Movie Matchmaker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="./index.html">
+        Home
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-5">
+        <h2>Create a Room<span class="member-name"></span></h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="hostLanguage">Please select a movie language</label>
+                    <select class="form-control" id="hostLanguage">
+                      <option>English</option>
+                      <option>Spanish</option>
+                      <option>French</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <p>Which streaming services do you have available and want to use?</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="netflixCheck">
+                        <label class="form-check-label" for="netflixCheck">
+                          Netflix
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="netflixCheck">
+                        <label class="form-check-label" for="netflixCheck">
+                          Hulu
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="netflixCheck">
+                        <label class="form-check-label" for="netflixCheck">
+                          HBO
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="netflixCheck">
+                        <label class="form-check-label" for="netflixCheck">
+                          Redbox
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="movieOrTv">Movie or TV?</label>
+                    <select class="form-control" id="movieOrTv">
+                      <option>Movie</option>
+                      <option>TV</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <p>For us to find recommended movies, we need one of the following - A movie to find similar movies, or a genre</p>
+                <div class="form-group col-md-6">
+                    <label for="genreSelect">Genre</label>
+                    <select class="form-control" id="genreSelect">
+                      <option>Comedy</option>
+                      <option>Action</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="hostMovie">Movie recommendation</label>
+                    <input type="text" class="form-control" id="hostMovie" placeholder="recommended movie for the algorithm">
+                </div>
+            </div>
+
+        </form>
+        <br>
+        <button type="button" class="btn btn-primary" id="createRoom">Create Room</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/host.js"></script>
+
+</body>
+
+</html>
