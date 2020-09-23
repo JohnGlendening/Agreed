@@ -84,6 +84,36 @@
                 <p>
                     Please give us some information about you:
                 </p>
+                <div class="col-lg-6 d-flex align-items-stretch contact-form-wrap">
+                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <label for="name">Your name</label>
+                                <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="email">Your email</label>
+                                <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label for="Age">Your age</label>
+                                <input type="text" name="name" class="form-control" id="age" data-rule="minlen:4" data-msg="Please enter at least 2 chars" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="Favorite Movie">Your favorite movie</label>
+                                <input type="movie" class="form-control" name="favorite movie" id="movie" data-rule="movie" data-msg="Please enter a valid movie" />
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+
+                        </div>
+                        <div class="text-center"><button type="submit">Submit</button></div>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -115,8 +145,8 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
                         </ul>
                     </div>
