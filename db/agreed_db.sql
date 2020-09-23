@@ -11,22 +11,40 @@ CREATE TABLE `agreed_db`.`movie_title` (
   PRIMARY KEY (`movie_id`));
 
 
-CREATE TABLE `agreed_db`.`likes` (
+
+
+----------------------
+CREATE TABLE likes (
   `likes_id` INT NOT NULL,
+  `dislikes_id` int,
   PRIMARY KEY (`likes_id`));
 
 
-CREATE TABLE `agreed_db`.`dislikes` (
+CREATE TABLE dislikes (
   `dislikes_id` INT NOT NULL,
+  `likes_id` int,
   PRIMARY KEY (`dislikes_id`));
 
-CREATE TABLE `agreed_db`.`host` (
+  SELECT * FROM agreed_db;             
+  ALTER TABLE likes ADD FOREIGN KEY (dislikes_id) REFERENCES dislikes(dislikes_id);
+  ALTER TABLE dislikes ADD FOREIGN KEY (likes_id) REFERENCES likes(likes_id);
+
+
+-------------------------
+CREATE TABLE hosttable (
   `host_id` INT NOT NULL,
   `host_code` INT NOT NULL,
-  PRIMARY KEY (`host_id`, `host_code`));
+  `guest_code` int,
+  PRIMARY KEY (`host_code`)
+  );
 
-
-CREATE TABLE `agreed_db`.`guest` (
+CREATE TABLE guesttable (
   `guest_id` INT NOT NULL,
   `guest_code` INT NOT NULL,
-  PRIMARY KEY (`guest_id`, `guest_code`));
+  `host_code` int,
+  PRIMARY KEY (guest_code)
+  );
+  
+SELECT * FROM agreed_db;
+ALTER TABLE guesttable ADD FOREIGN KEY (host_code) REFERENCES hosttable(host_code);
+ALTER TABLE hosttable ADD FOREIGN KEY (guest_code) REFERENCES guesttable(guest_code);
