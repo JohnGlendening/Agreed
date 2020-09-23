@@ -12,8 +12,8 @@ CREATE TABLE `agreed_db`.`movie_title` (
 
 
 CREATE TABLE `agreed_db`.`likes` (
-  `licks_id` INT NOT NULL,
-  PRIMARY KEY (`licks_id`));
+  `likes_id` INT NOT NULL,
+  PRIMARY KEY (`likes_id`));
 
 
 CREATE TABLE `agreed_db`.`dislikes` (
