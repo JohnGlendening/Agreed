@@ -17,8 +17,8 @@ CREATE TABLE `agreed_db`.`likes` (
 
 
 CREATE TABLE `agreed_db`.`dislikes` (
-  `dislicks_id` INT NOT NULL,
-  PRIMARY KEY (`dislicks_id`));
+  `dislikes_id` INT NOT NULL,
+  PRIMARY KEY (`dislikes_id`));
 
 CREATE TABLE `agreed_db`.`host` (
   `host_id` INT NOT NULL,
