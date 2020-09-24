@@ -1,0 +1,55 @@
+<h1>Movies</h1>
+
+
+
+<h2>Guest recommended</h2>
+<ul>
+    {{#each recommended}}
+    {{> recs/recs-block}}
+    {{/each}}
+</ul>
+<h2>Host recommended</h2>
+<ul>
+    {{#each recommended}}
+    {{> recs/recs-block}}
+    {{/each}}
+</ul>
+
+<h2>Movies that the host likes</h2>
+
+<ul>
+    {{#each recommended}}
+    {{#if host_like}}
+    {{> recs/agreed}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+
+<h2>Movies that the guest likes</h2>
+
+<ul>
+    {{#each recommended}}
+    {{#if guest_like}}
+    {{> recs/agreed}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+<h2>Movies that the host and guest likes</h2>
+
+
+<ul>
+    {{#each recommended}}
+    {{#if guest_like}}
+        {{#if host_like}}
+    {{> recs/agreed}}
+    {{/if}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+
