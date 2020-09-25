@@ -12,6 +12,10 @@ let baseURL = 'https://api.themoviedb.org/3/';
 let baseImageURL = null;
 let configData = null;
 let movieImageURL = '';
+let movieId = null;
+let recMovies = [];
+let lang = 'en';
+let hostMovie = '';
 
 let getConfig = () => {
     let url = "".concat(baseURL, 'configuration?api_key=', APIKEY);
@@ -38,14 +42,59 @@ let runSearch = (keyword) => {
     .then((data) => {
         console.log(data);
         let posterPath = data.results[0].poster_path;
+        movieId = data.results[0].id;
         movieImageURL = movieImageURL.concat(posterPath);
         console.log(movieImageURL);
         document.getElementById('movieImg').src = movieImageURL;
         document.getElementById('movieImg').alt = keyword;
-        document.getElementById('movieOutput').innerHTML = JSON.stringify(data, null, 4);
+        document.getElementById('movieOutput').innerHTML = JSON.stringify(data.results[0].overview, null, 1);
+        searchById(movieId);
     })
 
 }
 
-document.addEventListener('DOMContentLoaded', getConfig);
+let searchById = (id) => {
+    let url = ''.concat(baseURL, 'movie/', id, '/recommendations?api_key=', APIKEY, '&language=', lang, '-US&page=1');
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+        console.log(data);
+        for (var i = 0; i<10; i++) {
+            recMovies.push(data.results[i].id);
+        }
+        console.log(recMovies);
+    })
+}
 
+let searchPopular = () => {
+    let url = ''.concat(baseURL, 'movie/popular?api_key=', APIKEY, '&language=', lang, '-US&page=1');
+    fetch(url)
+    .then(result => result.json())
+    .then((data) => {
+        console.log(data);
+        for (var i = 0; i<10; i++) {
+            recMovies.push(data.results[i].id);
+        }
+        console.log(recMovies);
+    })
+}
+
+document.addEventListener('DOMContentLoaded', getConfig); // on page startup - runs getConfig to get image url ready for use
+
+$(document).ready(() => {
+    $.get("/api/host_movie").then(data => {
+    hostMovie = data;
+})
+
+    // grabs movie id and then searches for recommended movies based on that id
+    runSearch(hostMovie);
+
+
+})
+
+
+
+// runSearch(user input) to get movie id
+// searchById(movie id) to fill 10 movies into the recMovies array
+// or searchPopular if !movieId to do the same
+// for each value in recMovies array - run getConfig and runSearch to get image and overview
