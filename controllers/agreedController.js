@@ -1,5 +1,7 @@
 var express = require("express");
 
+
+
 var router = express.Router();
 
 // Import the model (reccomends.js) to use its database functions.
@@ -11,7 +13,7 @@ router.get("/", function (req, res) {
     var hbsObject = {
       recommended: data
     };
-    console.log(hbsObject);
+    //console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
@@ -28,32 +30,27 @@ router.post("/api/recommended", function (req, res) {
   });
 });
 
-router.put("/api/recommended/:id", function (req, res) {
+router.put("/api/recommended/host/:id", function(req, res) {
   var likeStatus = "id = " + req.params.id;
-
-  console.log("likeStatus", likeStatus);
-
+  console.log("likestatus", likeStatus);
   recommend.update({
-    guest_like: req.body.guest_like
-  }, likeStatus, function (result) {
+    host_like: req.body.host_like
+  }, likeStatus, function(result) {
     if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
     }
   });
 });
-router.put("/api/recommended/:id", function (req, res) {
+
+router.put("/api/recommended/guest/:id", function(req, res) {
   var likeStatus = "id = " + req.params.id;
-
-  console.log("likeStatus", likeStatus);
-
+  console.log("likestatus", likeStatus);
   recommend.update({
-    host_like: req.body.host_like
-  }, likeStatus, function (result) {
+    guest_like: req.body.guest_like
+  }, likeStatus, function(result) {
     if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {
       res.status(200).end();
