@@ -2,15 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Movie Matchmaker</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../assets\img\favicon (2).ico" rel="icon" type="image/x-icon" />
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link href="assets\css\style.css" rel="stylesheet">
-
-
+  <title>Movie Matchmaker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body background="../assets\img\popcorn_surround.jpg">
@@ -20,22 +16,22 @@
                 <a class="navbar-brand" href="../index.html">
         Home
       </a>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-5">
-                <h2>Create a Room<span class="member-name"></span></h2>
-            </div>
-        </div>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-5">
+        <h2>Create a Room<span class="member-name"></span></h2>
+      </div>
+    </div>
 
-        <div class="row">
-            <form class="hostForm ">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="hostLanguage">Please select a language</label>
-                        <select class="form-control" id="hostLanguage">
+    <div class="row">
+        <form class="hostForm ">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="hostLanguage">Please select a language</label>
+                    <select class="form-control" id="hostLanguage">
                       <option value='en'>English</option>
                       <option value='es'>Spanish</option>
                       <option value='fr'>French</option>
@@ -44,27 +40,28 @@
                       <option value='ru'>Russian</option>
                       <option value='zh'>Mandarin</option>
                     </select>
-                    </div>
                 </div>
+            </div>
 
 
-
-                <div class="form-row">
-                    <p>Please specify a movie for us to use as a recommendation to find a good selection of movies!</p>
-                    <div class="form-group">
-                        <label for="hostMovie">Movie recommendation</label>
-                        <input type="text" class="form-control" id="hostMovieRecommendation" placeholder="Recommended movie">
-                    </div>
+            
+            <div class="form-row">
+                <p>Please specify a movie for us to use as a recommendation to find a good selection of movies!</p>
+                <div class="form-group">
+                    <label for="hostMovie">Movie recommendation</label>
+                    <input type="text" class="form-control" id="hostMovieRecommendation" placeholder="Recommended movie">
                 </div>
+            </div>
 
-            </form>
-            <br>
-            <button type="submit" class="btn btn-primary" id="createRoom">Create Room</button>
-        </div>
+        </form>
+        <br>
+        <button type="submit" class="btn btn-primary" id="createRoom">Create Room</button>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets\js\host.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/host.js"></script>
+  <script type="text/javascript" src="assets/js/moviedb.js"></script>
 
 </body>
 
