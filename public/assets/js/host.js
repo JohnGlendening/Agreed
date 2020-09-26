@@ -13,16 +13,16 @@ $(document).ready(() => {
 
 
         startLobby(hostData.lang, hostData.recommendation);
-        
+
     });
-     
+
     function startLobby(lang, recommendation) {
         $.post("/api/recommended", {
-            lang: lang,
-            recommendation: recommendation
-        })
-        .then((res) => {
-            window.location.replace("./../public/picker.html")
-        })
+                lang: lang,
+                recommendation: recommendation
+            })
+            .then((res) => {
+                window.location.replace("picker.html")
+            })
     }
 })
