@@ -8,7 +8,7 @@ $(document).ready(() => {
 
         const hostData = {
             lang: movieLanguage.val(),
-            recommendation: recommended.val()
+            recommendation: recommended.val().trim()
         };
 
 
@@ -22,7 +22,7 @@ $(document).ready(() => {
             recommendation: recommendation
         })
         .then((res) => {
-            window.location.replace("./../public/picker.html")
+            window.location.replace("picker.html")
         })
     }
 })
