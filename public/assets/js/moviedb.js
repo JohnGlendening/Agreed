@@ -1,6 +1,8 @@
 // to get config data (image base urls)
 // https://api.themoviedb.org/3/configuration?api_key=<APIKEY>
 
+const recommended = require("../../../models/reccomends");
+
 // to fetch list of movies based on a keyword (USE RECOMMENDED MOVIES, NOT SIMILAR)
 // https://api.themoviedb.org/3/search/movie?api_key=<APIKEY>&query=<keyword>
 
@@ -14,8 +16,9 @@ let configData = null;
 let movieImageURL = '';
 let movieId = null;
 let recMovies = [];
+let recMoviesTitles = [];
 let lang = 'en';
-let hostMovie = '';
+let hostMovie = $("input#hostMovieRecommendation");
 
 let getConfig = () => {
     let url = "".concat(baseURL, 'configuration?api_key=', APIKEY);
@@ -28,7 +31,7 @@ let getConfig = () => {
         console.log(movieImageURL);
         console.log('config:', data);
         console.log('config fetched');
-        runSearch('Jaws');
+        runSearch(hostMovie);
     })
     .catch(function(err) {
         alert(err);
@@ -79,18 +82,41 @@ let searchPopular = () => {
     })
 }
 
+let idToTitle = (movieArray) => {
+    for (k=0; k<movieArray.length; k++) {
+        let movId = movieArray[k];
+        let url = ''.concat(baseUrl, 'movie/', movId, '?api_key=', APIKEY, '&language=', lang, '-US');
+        fetch(url)
+        .then(result => result.json())
+        .then((data) => {
+            recMoviesTitles.push(data.original_title);
+        })
+    }
+}
+
 document.addEventListener('DOMContentLoaded', getConfig); // on page startup - runs getConfig to get image url ready for use
 
-$(document).ready(() => {
-    $.get("/api/host_movie").then(data => {
-    hostMovie = data;
-})
+
 
     // grabs movie id and then searches for recommended movies based on that id
     runSearch(hostMovie);
+    idToTitle(recMovies);
+
+    for (m=0; m<recMovies.length; m++) {
+        $.post("/api/recommended"), function(req, res) {
+            recommended.create([
+                "movie_id", "movie_title", "guest_like", "host_like"
+            ], [
+                recMovies[m], recMoviesTitles[m], 0, 0
+            ], function (result) {
+                res.json({ id: result.insertId });
+            });
+        };
+    }
+    
 
 
-})
+
 
 
 
