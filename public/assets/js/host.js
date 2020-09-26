@@ -8,7 +8,7 @@ $(document).ready(() => {
 
         const hostData = {
             lang: movieLanguage.val(),
-            recommendation: recommended.val()
+            recommendation: recommended.val().trim()
         };
 
 
